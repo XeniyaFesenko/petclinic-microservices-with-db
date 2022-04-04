@@ -1140,7 +1140,7 @@ aws cloudformation create-stack --region ${AWS_REGION} --stack-name ${APP_STACK_
 
 ```bash
 CFN_KEYPAIR="call-ansible-test-dev.key"
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ${WORKSPACE}/${CFN_KEYPAIR} ec2-user@172.31.91.243 hostname
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ${WORKSPACE}/${CFN_KEYPAIR} ec2-user@172.31.82.229 hostname
 ```
 
 - Prepare static inventory file with name of `hosts.ini` for Ansible under `ansible/inventory` folder using Docker machines private IP addresses.
@@ -1876,7 +1876,7 @@ pipeline {
     environment {
         PATH=sh(script:"echo $PATH:/usr/local/bin", returnStdout:true).trim()
         APP_NAME="petclinic"
-        APP_STACK_NAME="Callet-${APP_NAME}-app-${BUILD_NUMBER}"
+        APP_STACK_NAME="Call-${APP_NAME}-app-${BUILD_NUMBER}"
         APP_REPO_NAME="claruswayset-repo/${APP_NAME}-app-dev"
         AWS_ACCOUNT_ID=sh(script:'export PATH="$PATH:/usr/local/bin" && aws sts get-caller-identity --query Account --output text', returnStdout:true).trim()
         AWS_REGION="us-east-1"
